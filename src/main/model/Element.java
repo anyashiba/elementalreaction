@@ -21,14 +21,14 @@ public class Element {
 
     //REQUIRES:
     //MODIFIES: this
-    //EFFECTS: uses the skill of the character and gives it a damage value
+    //EFFECTS: uses the skill of the character and adds it to the elementalSkill list
     public void callSkill() {
         //stub
     }
 
     //REQUIRES:
     //MODIFIES: this
-    //EFFECTS: uses the ult of the character and gives it a damage value
+    //EFFECTS: uses the ult of the character adds it to the elementalSkill list
     public void callUlt() {
         //stub
     }
@@ -37,28 +37,24 @@ public class Element {
     //MODIFIES: this
     //EFFECTS: returns list of attributes for the character
     public static ArrayList<String> attributes() {
-        ArrayList<String> list = new ArrayList<>(); //stub
-
-        return list; 
+        //stub
+        return null; 
     }
 
     public String getName() {
-        String name = "name"; //stub
-
-        return name;
+        //stub
+        return null;
     }
 
 
     public String getElementalSkill() {
-        String eSkill = "eSkill"; //stub
-
-        return eSkill;
+         //stub
+        return null;
     }
 
 
     public String getElement() {
-        String element = "element"; //stub
-
-        return element;
+        //stub
+        return null;
     }
 }
