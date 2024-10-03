@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ElementalReaction {
 
-    private ArrayList<Element> reaction;
+    private ArrayList<Element> battleLog;
 
     //REQUIRES: 
     //MODIFIES: this
@@ -15,16 +15,15 @@ public class ElementalReaction {
 
     //REQUIRES: 
     //MODIFIES: this
-    //EFFECTS: detects what elements were called and what reaction occurs and damages
-    //enemy accordingly
-    public int react(){
+    //EFFECTS: call abilities using method and it will return the value of damage it did
+    public int react(String ability1, String ability2){
         return 1; //stub
     }
 
     //REQUIRES: 
     //MODIFIES: this
-    //EFFECTS: adds the element to the list 
-    public void addElement() {
+    //EFFECTS: adds the element to the battle log list 
+    public void addElement(Element element) {
         //stub
     }
 
