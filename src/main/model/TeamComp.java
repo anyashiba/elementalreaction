@@ -19,4 +19,8 @@ public class TeamComp {
         //stub
     }
 
+    public ArrayList<Element> getTeam() {
+        return null; //stub
+    }
+
 }

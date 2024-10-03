@@ -4,7 +4,6 @@ import java.lang.String;
 import java.util.ArrayList;
 
 public class Element {
-    static final int baseDamage = 10;
     private String element;
     private String character;
     private String elementalSkill;
@@ -13,23 +12,8 @@ public class Element {
 
     //REQUIRES:
     //MODIFIES: this
-    //EFFECTS: constructs an element with an attached character, element, skill, ult,
-    //and starts the character off with 10 base dmg
+    //EFFECTS: constructs an element with an attached character, element, skill, ult
     public Element(String character, String element, String eSkill, String ult) {
-        //stub
-    }
-
-    //REQUIRES:
-    //MODIFIES: this
-    //EFFECTS: uses the skill of the character and adds it to the elementalSkill list
-    public void callSkill() {
-        //stub
-    }
-
-    //REQUIRES:
-    //MODIFIES: this
-    //EFFECTS: uses the ult of the character adds it to the elementalSkill list
-    public void callUlt() {
         //stub
     }
 

@@ -2,6 +2,7 @@ package model;
 
 public class Enemy {
     private int health;
+    private int dmgDealt;
 
     //REQUIRES: 
     //MODIFIES: this
@@ -12,8 +13,15 @@ public class Enemy {
 
     //REQUIRES: dmg > 0 and hp cannot be less than 0
     //MODIFIES: this
-    //EFFECTS: damages enemy by given int and resets hp when enemy health < 0 
+    //EFFECTS: damages enemy by given int, resets hp when enemy health < 0 
     public void damage(int dmg) {
+        //stub
+    }
+
+    //REQUIRES: 
+    //MODIFIES: this
+    //EFFECTS: resets damage dealt value back to 0
+    public void resetDmg() {
         //stub
     }
 
