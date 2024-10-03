@@ -20,7 +20,7 @@ public class Element {
     //REQUIRES:
     //MODIFIES: this
     //EFFECTS: returns list of attributes for the character
-    public static ArrayList<String> attributes() {
+    public ArrayList<String> attributes() {
         //stub
         return null; 
     }
@@ -34,6 +34,10 @@ public class Element {
     public String getElementalSkill() {
          //stub
         return null;
+    }
+
+    public String getUlt () {
+        return null; //stub
     }
 
 
