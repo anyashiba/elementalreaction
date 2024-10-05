@@ -9,36 +9,40 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 public class TestGenshin {
-    private Element testElement;
+    private Character testCharacter;
+    private Element testSkill;
+    private Element testUlt;
     private ElementalReaction testER;
     private Enemy testEnemy;
     private TeamComp testTeam;
     
     @BeforeEach
     void runBefore() {
-        testElement = new Element("Kinich", "Dendro", "Canopy Hunter: Riding High", "Hail to the Almighty Dragonlord");
+        testSkill = new Element("Dendro");
+        testUlt = new Element("Dendro");
+        testCharacter = new Character("Kinich", "Dendro", testSkill, testUlt);
         testER = new ElementalReaction();
         testEnemy = new Enemy();
         testTeam = new TeamComp();
     }
 
     @Test
-    void testElementConstructor() {
-        assertEquals("Dendro", testElement.getElement());
-        assertEquals("Kinich", testElement.getName());
-        assertEquals("Canopy Hunter: Riding High", testElement.getElementalSkill());
-        assertEquals("Hail to the Almighty Dragonlord", testElement.getUlt());  
+    void testCharacterConstructor() {
+        assertEquals("Dendro", testCharacter.getESkill().getElement());
+        assertEquals("Kinich", testCharacter.getName());
+        assertEquals(testSkill, testCharacter.getESkill());
+        assertEquals(testUlt, testCharacter.getUlt());  
     }
 
     @Test
-    void testElementAttributes() {
+    void testCharacterAttributes() {
         ArrayList<String> testAttribute = new ArrayList<String>();
         testAttribute.add("Name: Kinich");
         testAttribute.add("Element: Dendro");
-        testAttribute.add("ESkill: Canopy Hunter: Riding High");
-        testAttribute.add("Ult: Hail to the Almighty Dragonlord");
-        assertEquals(testAttribute, testElement.attributes());
-        assertEquals(4, testElement.attributes().size());
+        testAttribute.add("ESkill: testSkill");
+        testAttribute.add("Ult: testUlt");
+        assertEquals(testAttribute, testCharacter.attributes());
+        assertEquals(4, testCharacter.attributes().size());
     }
 
     @Test
