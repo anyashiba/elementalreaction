@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 public class TestGenshin {
-    public Element testElement;
-    public ElementalReaction testER;
-    public Enemy testEnemy;
-    public TeamComp testTeam;
+    private Element testElement;
+    private ElementalReaction testER;
+    private Enemy testEnemy;
+    private TeamComp testTeam;
     
     @BeforeEach
     void runBefore() {
@@ -27,16 +27,24 @@ public class TestGenshin {
         assertEquals("Dendro", testElement.getElement());
         assertEquals("Kinich", testElement.getName());
         assertEquals("Canopy Hunter: Riding High", testElement.getElementalSkill());
-        assertEquals("Hail to the Almighty Dragonlord", testElement.getUlt());
+        assertEquals("Hail to the Almighty Dragonlord", testElement.getUlt());  
     }
 
     @Test
-    void testAttributes() {
+    void testElementAttributes() {
         ArrayList<String> testAttribute = new ArrayList<String>();
         testAttribute.add("Name: Kinich");
         testAttribute.add("Element: Dendro");
         testAttribute.add("ESkill: Canopy Hunter: Riding High");
         testAttribute.add("Ult: Hail to the Almighty Dragonlord");
         assertEquals(testAttribute, testElement.attributes());
+        assertEquals(4, testElement.attributes().size());
     }
+
+    @Test
+    void testERconstructor() {
+        assertTrue(testER.getLog().isEmpty());
+        assertEquals(0, testER.getLog().size());
+    }
+
 }

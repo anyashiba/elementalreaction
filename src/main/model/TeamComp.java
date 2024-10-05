@@ -7,14 +7,14 @@ public class TeamComp {
 
     //REQUIRES: 
     //MODIFIES: this
-    //EFFECTS: constructs an empty team comp and ensures size of list must be < 4
+    //EFFECTS: constructs an empty team comp
     public TeamComp() {
         //stub
     }
 
     //REQUIRES: 
     //MODIFIES: this
-    //EFFECTS: adds character to the team
+    //EFFECTS: adds character to the team 
     public void addCharacter() {
         //stub
     }

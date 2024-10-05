@@ -13,13 +13,13 @@ public class Element {
     //REQUIRES:
     //MODIFIES: this
     //EFFECTS: constructs an element with an attached character, element, skill, ult
-    public Element(String character, String element, String eSkill, String ult) {
+    public Element(String character, String element, String eskill, String ult) {
         //stub
     }
 
     //REQUIRES:
     //MODIFIES: this
-    //EFFECTS: returns list of attributes for the character
+    //EFFECTS: returns list of attributes for the character in the form attribute: trait
     public ArrayList<String> attributes() {
         //stub
         return null; 
@@ -36,7 +36,7 @@ public class Element {
         return null;
     }
 
-    public String getUlt () {
+    public String getUlt() {
         return null; //stub
     }
 
