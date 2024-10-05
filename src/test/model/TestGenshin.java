@@ -18,8 +18,8 @@ public class TestGenshin {
     
     @BeforeEach
     void runBefore() {
-        testSkill = new Element("Dendro");
-        testUlt = new Element("Dendro");
+        testSkill = new Element("Dendro", "Canopy Hunter: Riding High");
+        testUlt = new Element("Dendro", "Hail to the Almighty Dragonlord");
         testCharacter = new Character("Kinich", "Dendro", testSkill, testUlt);
         testER = new ElementalReaction();
         testEnemy = new Enemy();
@@ -39,11 +39,13 @@ public class TestGenshin {
         ArrayList<String> testAttribute = new ArrayList<String>();
         testAttribute.add("Name: Kinich");
         testAttribute.add("Element: Dendro");
-        testAttribute.add("ESkill: testSkill");
-        testAttribute.add("Ult: testUlt");
+        testAttribute.add("ESkill: Canopy Hunter: Riding High");
+        testAttribute.add("Ult: Hail to the Almighty Dragonlord");
         assertEquals(testAttribute, testCharacter.attributes());
         assertEquals(4, testCharacter.attributes().size());
     }
+
+    
 
     @Test
     void testERconstructor() {
