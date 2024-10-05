@@ -45,7 +45,13 @@ public class TestGenshin {
         assertEquals(4, testCharacter.attributes().size());
     }
 
-    
+    @Test
+    void testElementConstructor() {
+        assertEquals("Canopy Hunter: Riding High", testSkill.getName());
+        assertEquals("Dendro", testSkill.getElement());
+        assertEquals("Hail to the Almighty Dragonlord", testUlt.getName());
+        assertEquals("Dendro", testUlt.getElement());
+    }
 
     @Test
     void testERconstructor() {

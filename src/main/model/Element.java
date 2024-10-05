@@ -14,7 +14,14 @@ public class Element {
         //stub
     }
 
+    //getters
+
     public String getElement() {
+        //stub
+        return null;
+    }
+
+    public String getName() {
         //stub
         return null;
     }

@@ -27,7 +27,7 @@ public class ElementalReaction {
     //MODIFIES: this
     //EFFECTS: call abilities using method, adds the abilities to the battlelog,
     // and it will return the value of damage it did
-    public int react(String ability1, String ability2) {
+    public int react(Element ability1, Element ability2) {
         return 1; //stub
     }
 
