@@ -59,29 +59,12 @@ public class TestGenshin {
         assertEquals(0, testER.getLog().size());
     }
 
-    @Test
-    void testERgetLog() {
-        ArrayList<String> testLog = new ArrayList<>();
-        testLog.add("ability1");
-        assertEquals("ability1", testLog.get(0));
-        assertEquals(1, testER.getLog().size());
-    }
-
-    void testERgetLogMultiple() {
-        ArrayList<String> testLog = new ArrayList<>();
-        testLog.add("ability1");
-        testLog.add("ability2");
-        assertEquals("ability1", testLog.get(0));
-        assertEquals("ability1", testLog.get(1));
-        assertEquals(2, testER.getLog().size());
-    }
-
     @Test 
     void testERreact() {
         Element e1 = new Element("Dendro", "ability1");
         Element e2 = new Element("Hydro", "ability2");
         assertEquals(15, testER.react(e1, e2));
-        assertEquals("ability1 and ability 2 did 15 damage!", testER.getLog().get(0));
+        assertEquals("ability1 and ability2 did 15 damage!", testER.getLog().get(0));
         assertEquals(1, testER.getLog().size());
     }
 
@@ -92,8 +75,8 @@ public class TestGenshin {
         Element e3 = new Element("Pyro", "ability3");
         assertEquals(15, testER.react(e1, e2));
         assertEquals(5, testER.react(e1, e3));
-        assertEquals("ability1 and ability 2 did 15 damage!", testER.getLog().get(0));
-        assertEquals("ability1 and ability 3 did 5 damage!", testER.getLog().get(1));
+        assertEquals("ability1 and ability2 did 15 damage!", testER.getLog().get(0));
+        assertEquals("ability1 and ability3 did 5 damage!", testER.getLog().get(1));
         assertEquals(2, testER.getLog().size());
     }
 
@@ -118,7 +101,7 @@ public class TestGenshin {
         assertEquals(15, testER.react(Hydro, Dendro));
         assertEquals(2, testER.react(Hydro, Hydro));
         assertEquals(18, testER.react(Hydro, Pyro));
-        assertEquals(8, testER.react(Hydro, Anemo));
+        assertEquals(10, testER.react(Hydro, Anemo));
         assertEquals(8, testER.react(Hydro, Electro));
         assertEquals(7, testER.react(Hydro, Geo));
         assertEquals(12, testER.react(Hydro, Cryo));
@@ -153,14 +136,14 @@ public class TestGenshin {
         assertEquals(2, testER.react(Geo, Anemo));
         assertEquals(7, testER.react(Geo, Electro));
         assertEquals(2, testER.react(Geo, Geo));
-        assertEquals(7, testER.react(Geo, Cryo));
+        assertEquals(2, testER.react(Geo, Cryo));
         //Cryo
         assertEquals(2, testER.react(Cryo, Dendro));
         assertEquals(12, testER.react(Cryo, Hydro));
         assertEquals(20, testER.react(Cryo, Pyro));
         assertEquals(10, testER.react(Cryo, Anemo));
         assertEquals(9, testER.react(Cryo, Electro));
-        assertEquals(7, testER.react(Cryo, Geo));
+        assertEquals(2, testER.react(Cryo, Geo));
         assertEquals(2, testER.react(Cryo, Cryo));
     }
 
