@@ -14,7 +14,6 @@ public class Character {
         //stub
     }
 
-
     //REQUIRES:
     //MODIFIES: this
     //EFFECTS: returns list of attributes for the character in the form attribute: trait
@@ -22,6 +21,8 @@ public class Character {
         //stub
         return null; 
     }
+
+    //getters
 
     public String getName() {
         //stub

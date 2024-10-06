@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class TeamComp {
-    private ArrayList<Element> team;
+    private ArrayList<Character> team;
 
     //REQUIRES: 
     //MODIFIES: this
@@ -18,6 +18,8 @@ public class TeamComp {
     public void addCharacter() {
         //stub
     }
+
+    //getters
 
     public ArrayList<Element> getTeam() {
         return null; //stub

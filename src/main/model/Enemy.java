@@ -2,7 +2,6 @@ package model;
 
 public class Enemy {
     private int health;
-    private int dmgDealt;
 
     //REQUIRES: 
     //MODIFIES: this
@@ -20,9 +19,15 @@ public class Enemy {
 
     //REQUIRES: 
     //MODIFIES: this
-    //EFFECTS: resets damage dealt value back to 0
-    public void resetDmg() {
+    //EFFECTS: resets the health bar back to 0
+    public void resetHP() {
         //stub
+    }
+
+    //getters
+
+    public int getHP() {
+        return 1; //stub
     }
 
 }

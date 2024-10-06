@@ -100,6 +100,7 @@ public class TestGenshin {
         assertEquals(2, testER.getLog().size());
     }
 
+    @Test
     void testERreactAll() {
         Element Dendro = new Element("Dendro", "ability1");
         Element Hydro = new Element("Hydro", "ability2");
@@ -164,5 +165,29 @@ public class TestGenshin {
         assertEquals(9, testER.react(Cryo, Electro));
         assertEquals(7, testER.react(Cryo, Geo));
         assertEquals(2, testER.react(Cryo, Cryo));
+    }
+
+    @Test
+    void testEnemyConstructor() {
+        assertEquals(100, testEnemy.getHP());
+    }
+
+    @Test
+    void testEnemyDamage() {
+        testEnemy.damage(50);
+        assertEquals(50, testEnemy.getHP());
+    }
+
+    @Test
+    void testEnemyDamageMultiple() {
+        testEnemy.damage(50);
+        testEnemy.damage(30);
+        assertEquals(20, testEnemy.getHP());
+    }
+
+    @Test
+    void testEnemyHPzero() {
+        testEnemy.damage(100);
+        assertEquals(100, testEnemy.getHP());
     }
 }
