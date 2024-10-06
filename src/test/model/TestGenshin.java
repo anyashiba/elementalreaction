@@ -174,14 +174,13 @@ public class TestGenshin {
 
     @Test
     void testTeamCompConstructor() {
-        assertEquals(0, testTeam.getTeam());
         assertTrue(testTeam.getTeam().isEmpty());
     }
 
     @Test
     void testAddCharacter() {
         testTeam.addCharacter(testCharacter);
-        assertEquals(1, testTeam.getTeam());
+        assertEquals(1, testTeam.getTeam().size());
         assertEquals(testCharacter, testTeam.getTeam().get(0));
     }
 
@@ -192,7 +191,7 @@ public class TestGenshin {
         Character testCharacter2 = new Character("Neuvillette", "Hydro", e1, e2);
         testTeam.addCharacter(testCharacter);
         testTeam.addCharacter(testCharacter2);
-        assertEquals(2, testTeam.getTeam());
+        assertEquals(2, testTeam.getTeam().size());
         assertEquals(testCharacter, testTeam.getTeam().get(0));
         assertEquals(testCharacter2, testTeam.getTeam().get(1));
     }

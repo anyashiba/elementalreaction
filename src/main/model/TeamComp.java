@@ -9,20 +9,20 @@ public class TeamComp {
     //MODIFIES: this
     //EFFECTS: constructs an empty team comp
     public TeamComp() {
-        //stub
+        this.team = new ArrayList<Character>();
     }
 
     //REQUIRES: 
     //MODIFIES: this
     //EFFECTS: adds character to the team 
     public void addCharacter(Character character) {
-        //stub
+        team.add(character);
     }
 
     //getters
 
-    public ArrayList<Element> getTeam() {
-        return null; //stub
+    public ArrayList<Character> getTeam() {
+        return team;
     }
 
 }
