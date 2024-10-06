@@ -23,6 +23,6 @@ public class TeamComp {
 
     public ArrayList<Character> getTeam() {
         return team;
-    }
+    } 
 
 }
