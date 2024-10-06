@@ -7,9 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.zip.CRC32;
-
-import model.ElementalReaction;
 
 public class TestGenshin {
     private Character testCharacter;
@@ -189,5 +186,30 @@ public class TestGenshin {
     void testEnemyHPzero() {
         testEnemy.damage(100);
         assertEquals(100, testEnemy.getHP());
+    }
+
+    @Test
+    void testTeamCompConstructor() {
+        assertEquals(0, testTeam.getTeam());
+        assertTrue(testTeam.getTeam().isEmpty());
+    }
+
+    @Test
+    void testAddCharacter() {
+        testTeam.addCharacter(testCharacter);
+        assertEquals(1, testTeam.getTeam());
+        assertEquals(testCharacter, testTeam.getTeam().get(0));
+    }
+
+    @Test
+    void testAddMultipleCharacter() {
+        Element e1 = new Element("Hydro", "O Tears, I Shall Repay");
+        Element e2 = new Element("Hydro", "O Tides, I Have Returned");
+        Character testCharacter2 = new Character("Neuvillette", "Hydro", e1, e2);
+        testTeam.addCharacter(testCharacter);
+        testTeam.addCharacter(testCharacter2);
+        assertEquals(2, testTeam.getTeam());
+        assertEquals(testCharacter, testTeam.getTeam().get(0));
+        assertEquals(testCharacter2, testTeam.getTeam().get(1));
     }
 }

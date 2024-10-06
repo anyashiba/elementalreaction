@@ -15,7 +15,7 @@ public class TeamComp {
     //REQUIRES: 
     //MODIFIES: this
     //EFFECTS: adds character to the team 
-    public void addCharacter() {
+    public void addCharacter(Character character) {
         //stub
     }
 
