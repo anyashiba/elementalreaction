@@ -28,7 +28,7 @@ public class TestGenshin {
 
     @Test
     void testCharacterConstructor() {
-        assertEquals("Dendro", testCharacter.getESkill().getElement());
+        assertEquals("Dendro", testCharacter.getElement());
         assertEquals("Kinich", testCharacter.getName());
         assertEquals(testSkill, testCharacter.getESkill());
         assertEquals(testUlt, testCharacter.getUlt());  

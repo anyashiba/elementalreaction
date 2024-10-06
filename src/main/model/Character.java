@@ -4,38 +4,50 @@ import java.util.ArrayList;
 
 public class Character {
     private String name;
-    private Element elementalSkill;
-    private Element ultimateSkill;
+    private String element;
+    private Element eSkill;
+    private Element ult;
 
     //REQUIRES:
     //MODIFIES: this
     //EFFECTS: constructs a character with a name and gives it abilties the associated element specified
     public Character(String name, String element, Element eskill, Element ult) {
-        //stub
+        this.name = name;
+        this.element = element;
+        this.eSkill = eskill;
+        this.ult = ult;
     }
 
     //REQUIRES:
     //MODIFIES: this
     //EFFECTS: returns list of attributes for the character in the form attribute: trait
     public ArrayList<String> attributes() {
-        //stub
-        return null; 
+        ArrayList<String> attributes = new ArrayList<>();
+        attributes.add("Name: " + name);
+        attributes.add("Element: " + element);
+        attributes.add("ESkill: " + eSkill.getName());
+        attributes.add("Ult: " + ult.getName());
+
+        return attributes;
     }
 
     //getters
 
     public String getName() {
-        //stub
-        return null;
+        return name;
     }
 
 
     public Element getESkill() {
          //stub
-        return null;
+        return eSkill;
     }
 
     public Element getUlt() {
-        return null; //stub
+        return ult;
+    }
+
+    public String getElement() {
+        return element;
     }
 }
