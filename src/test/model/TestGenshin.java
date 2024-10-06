@@ -167,7 +167,8 @@ public class TestGenshin {
 
     @Test
     void testEnemyHPzero() {
-        testEnemy.damage(100);
+        testEnemy.damage(50);
+        testEnemy.damage(51);
         assertEquals(100, testEnemy.getHP());
     }
 
