@@ -11,18 +11,17 @@ public class Element {
     //MODIFIES: this
     //EFFECTS: constructs an element with specified element type and the abiltiy associated with element
     public Element(String element, String skill) {
-        //stub
+        this.element = element;
+        this.name = skill;
     }
 
     //getters
 
     public String getElement() {
-        //stub
-        return null;
+        return element;
     }
 
     public String getName() {
-        //stub
-        return null;
+        return name;
     }
 }
