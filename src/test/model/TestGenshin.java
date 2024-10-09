@@ -1,7 +1,6 @@
 package model;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -124,7 +123,6 @@ public class TestGenshin {
     @Test 
     void testERreact() {
         assertEquals(15, testER.react(dendro, hydro));
-        assertEquals(15, testER.react(dendro, hydro));
         assertEquals("ability1 and ability2 did 15 damage!", testER.getLog().get(0));
         assertEquals(1, testER.getLog().size());
     }
@@ -133,15 +131,12 @@ public class TestGenshin {
     void testERreactMultiple() {
         assertEquals(15, testER.react(dendro, hydro));
         assertEquals(5, testER.react(dendro, pyro));
-        assertEquals(15, testER.react(dendro, hydro));
-        assertEquals(5, testER.react(dendro, pyro));
         assertEquals("ability1 and ability2 did 15 damage!", testER.getLog().get(0));
         assertEquals("ability1 and ability3 did 5 damage!", testER.getLog().get(1));
         assertEquals(2, testER.getLog().size());
     }
 
     @Test
-    void testERreactAllDendro() {
     void testERreactAllDendro() {
         //Dendro
         assertEquals(2, testER.react(dendro, dendro));
@@ -153,31 +148,10 @@ public class TestGenshin {
         assertEquals(2, testER.react(dendro, cryo));
     }
 
-    @Test
-    void testERreactAllHydro() {
-        assertEquals(2, testER.react(dendro, dendro));
-        assertEquals(15, testER.react(dendro, hydro));
-        assertEquals(5, testER.react(dendro, pyro));
-        assertEquals(2, testER.react(dendro, anemo));
-        assertEquals(15, testER.react(dendro, electro));
-        assertEquals(2, testER.react(dendro, geo));
-        assertEquals(2, testER.react(dendro, cryo));
-    }
 
     @Test
     void testERreactAllHydro() {
         //Hydro
-        assertEquals(15, testER.react(hydro, dendro));
-        assertEquals(2, testER.react(hydro, hydro));
-        assertEquals(18, testER.react(hydro, pyro));
-        assertEquals(10, testER.react(hydro, anemo));
-        assertEquals(8, testER.react(hydro, electro));
-        assertEquals(7, testER.react(hydro, geo));
-        assertEquals(12, testER.react(hydro, cryo));
-    }
-
-    @Test
-    void testERreactAllPyro() {
         assertEquals(15, testER.react(hydro, dendro));
         assertEquals(2, testER.react(hydro, hydro));
         assertEquals(18, testER.react(hydro, pyro));
@@ -201,29 +175,7 @@ public class TestGenshin {
 
     @Test
     void testERreactAllAnemo() {
-        assertEquals(5, testER.react(pyro, dendro));
-        assertEquals(18, testER.react(pyro, hydro));
-        assertEquals(2, testER.react(pyro, pyro));
-        assertEquals(10, testER.react(pyro, anemo));
-        assertEquals(8, testER.react(pyro, electro));
-        assertEquals(7, testER.react(pyro, geo));
-        assertEquals(20, testER.react(pyro, cryo));
-    }
-
-    @Test
-    void testERreactAllAnemo() {
         //Anemo
-        assertEquals(2, testER.react(anemo, dendro));
-        assertEquals(10, testER.react(anemo, hydro));
-        assertEquals(10, testER.react(anemo, pyro));
-        assertEquals(2, testER.react(anemo, anemo));
-        assertEquals(10, testER.react(anemo, electro));
-        assertEquals(2, testER.react(anemo, geo));
-        assertEquals(10, testER.react(anemo, cryo));
-    }
-    
-    @Test
-    void testERreactAllElectro() {
         assertEquals(2, testER.react(anemo, dendro));
         assertEquals(10, testER.react(anemo, hydro));
         assertEquals(10, testER.react(anemo, pyro));
@@ -247,29 +199,7 @@ public class TestGenshin {
 
     @Test
     void testERreactAllGeo() {
-        assertEquals(15, testER.react(electro, dendro));
-        assertEquals(8, testER.react(electro, hydro));
-        assertEquals(8, testER.react(electro, pyro));
-        assertEquals(10, testER.react(electro, anemo));
-        assertEquals(2, testER.react(electro, electro));
-        assertEquals(7, testER.react(electro, geo));
-        assertEquals(9, testER.react(electro, cryo));
-    }
-
-    @Test
-    void testERreactAllGeo() {
         //Geo
-        assertEquals(2, testER.react(geo, dendro));
-        assertEquals(7, testER.react(geo, hydro));
-        assertEquals(7, testER.react(geo, pyro));
-        assertEquals(2, testER.react(geo, anemo));
-        assertEquals(7, testER.react(geo, electro));
-        assertEquals(2, testER.react(geo, geo));
-        assertEquals(2, testER.react(geo, cryo));
-    }
-
-    @Test
-    void testERreactAllCryo() {
         assertEquals(2, testER.react(geo, dendro));
         assertEquals(7, testER.react(geo, hydro));
         assertEquals(7, testER.react(geo, pyro));
@@ -319,13 +249,6 @@ public class TestGenshin {
     @Test
     void testEnemyHPzero() {
         testEnemy.damage(100);
-        assertEquals(0, testEnemy.getHP());
-    }
-
-    @Test
-    void testEnemyResetHP() {
-        testEnemy.damage(50);
-        testEnemy.resetHP();
         assertEquals(0, testEnemy.getHP());
     }
 
