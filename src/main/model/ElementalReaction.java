@@ -28,6 +28,7 @@ public class ElementalReaction {
     //EFFECTS: call abilities using method, adds the abilities to the battlelog
     //how much dmg it did, and it will return the value of damage the abilties did based on
     //their combinations
+    @SuppressWarnings("methodlength")
     public int react(Element a1, Element a2) {
         int dmg = 0;
 
@@ -41,18 +42,7 @@ public class ElementalReaction {
             dmg = VAPORIZE;
         } else if (melt(a1, a2)) {
             dmg = MELT; 
-        } else {
-            dmg = reactAllOptions(a1, a2);
-        }
-
-        battleLog.add(a1.getName() + " and " + a2.getName() + " did " + dmg + " damage!");
-        return dmg;
-    }
-
-    private int reactAllOptions(Element a1, Element a2) {
-        int dmg = 0;
-
-        if (superconduct(a1, a2)) {
+        } else if (superconduct(a1, a2)) {
             dmg = SUPERCONDUCT;
         } else if (frozen(a1, a2)) {
             dmg = FROZEN;
@@ -66,6 +56,7 @@ public class ElementalReaction {
             dmg = BASE;
         }
 
+        battleLog.add(a1.getName() + " and " + a2.getName() + " did " + dmg + " damage!");
         return dmg;
     }
 

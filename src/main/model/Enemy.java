@@ -17,7 +17,9 @@ public class Enemy {
         health -= dmg;
     }
 
-    //TODO: specify and test 
+    //REQUIRES:
+    //MODIFIES: this
+    //EFFECTS: resets enemy HP back to 100
     public void resetHP() {
         health = 100;
     }

@@ -8,12 +8,34 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 public class TestGenshin {
-    private Character testCharacter;
-    private Element testSkill;
-    private Element testUlt;
-    private ElementalReaction testER;
     private Enemy testEnemy;
     private TeamComp testTeam;
+    private ElementalReaction testER;
+
+    //characters
+    private Character kinich;
+    private Element kinichSkill;
+    private Element kinichUlt;
+    private Character neuvilette;
+    private Element neuvSkill;
+    private Element neuvUlt;
+    private Character zhongli;
+    private Element zhongliSkill;
+    private Element zhongliUlt;
+    private Character wrio;
+    private Element wrioSkill;
+    private Element wrioUlt;
+    private Character gaming;
+    private Element gamingSkill;
+    private Element gamingUlt;
+    private Character cyno;
+    private Element cynoSkill;
+    private Element cynoUlt;
+    private Character xiao;
+    private Element xiaoSkill;
+    private Element xiaoUlt;
+    
+    //elements
     private Element dendro;
     private Element hydro;
     private Element pyro;
@@ -21,15 +43,41 @@ public class TestGenshin {
     private Element electro;
     private Element geo;
     private Element cryo;
+    private ArrayList<String> assertTrue;
     
+    @SuppressWarnings("methodlength") 
     @BeforeEach
     void runBefore() {
-        testSkill = new Element("Dendro", "Canopy Hunter: Riding High");
-        testUlt = new Element("Dendro", "Hail to the Almighty Dragonlord");
-        testCharacter = new Character("Kinich", "Dendro", testSkill, testUlt);
+        // test characters
+        kinichSkill = new Element("Dendro", "Canopy Hunter: Riding High");
+        kinichUlt = new Element("Dendro", "Hail to the Almighty Dragonlord");
+        kinich = new Character("Kinich", "Dendro", kinichSkill, kinichUlt);
+        neuvSkill = new Element("Hydro", "O Tears, I Shall Repay");
+        neuvUlt = new Element("Hydro", "O Tides, I Have Returned");
+        neuvilette = new Character("Neuvillette", "Hydro", neuvSkill, neuvUlt);
+        zhongliSkill = new Element("Geo", "Dominus Lapidis");
+        zhongliUlt = new Element("Geo", "Planet Befall");
+        zhongli = new Character("Zhongli", "Geo", zhongliSkill, zhongliUlt);
+        wrioSkill = new Element("Cryo", "Icefang Rush");
+        wrioUlt = new Element("Cryo", "Darkgold Wolfbite");
+        wrio = new Character("Wriothesley", "Cryo", wrioSkill, wrioUlt);
+        gamingSkill = new Element("Pyro", "Bestial Ascent");
+        gamingUlt = new Element("Pyro", "Suanni's Gilded Dance");
+        gaming = new Character("Gaming", "Pyro", gamingSkill, gamingUlt);
+        cynoSkill = new Element("Electro", "Secret Rite: Chasmic Soulfarer");
+        cynoUlt = new Element("Electro", "Sacred Rite: Wolf's Swiftness");
+        cyno = new Character("Cyno", "Electro", cynoSkill, cynoUlt);
+        xiaoSkill = new Element("Anemo", "Lemniscatic Wind Cycling");
+        xiaoUlt = new Element("Anemo", "Bane of All Evil");
+        xiao = new Character("Xiao", "Anemo", xiaoSkill, xiaoUlt);
+
+        assertTrue = new ArrayList<String>();
+
         testER = new ElementalReaction();
         testEnemy = new Enemy();
         testTeam = new TeamComp();
+
+        //elements
         dendro = new Element("Dendro", "ability1");
         hydro = new Element("Hydro", "ability2");
         pyro = new Element("Pyro", "ability3");
@@ -41,10 +89,10 @@ public class TestGenshin {
 
     @Test
     void testCharacterConstructor() {
-        assertEquals("Dendro", testCharacter.getElement());
-        assertEquals("Kinich", testCharacter.getName());
-        assertEquals(testSkill, testCharacter.getESkill());
-        assertEquals(testUlt, testCharacter.getUlt());  
+        assertEquals("Dendro", kinich.getElement());
+        assertEquals("Kinich", kinich.getName());
+        assertEquals(kinichSkill, kinich.getESkill());
+        assertEquals(kinichUlt, kinich.getUlt());  
     }
 
     @Test
@@ -54,16 +102,16 @@ public class TestGenshin {
         testAttribute.add("Element: Dendro");
         testAttribute.add("1: ESkill: Canopy Hunter: Riding High");
         testAttribute.add("2: Ult: Hail to the Almighty Dragonlord");
-        assertEquals(testAttribute, testCharacter.attributes());
-        assertEquals(4, testCharacter.attributes().size());
+        assertEquals(testAttribute, kinich.attributes());
+        assertEquals(4, kinich.attributes().size());
     }
 
     @Test
     void testElementConstructor() {
-        assertEquals("Canopy Hunter: Riding High", testSkill.getName());
-        assertEquals("Dendro", testSkill.getElement());
-        assertEquals("Hail to the Almighty Dragonlord", testUlt.getName());
-        assertEquals("Dendro", testUlt.getElement());
+        assertEquals("Canopy Hunter: Riding High", kinichSkill.getName());
+        assertEquals("Dendro", kinichSkill.getElement());
+        assertEquals("Hail to the Almighty Dragonlord", kinichUlt.getName());
+        assertEquals("Dendro", kinichUlt.getElement());
     }
 
     @Test
@@ -210,20 +258,393 @@ public class TestGenshin {
 
     @Test
     void testAddCharacter() {
-        testTeam.addCharacter(testCharacter);
+        testTeam.addCharacter(kinich);
         assertEquals(1, testTeam.getTeam().size());
-        assertEquals(testCharacter, testTeam.getTeam().get(0));
+        assertEquals(kinich, testTeam.getTeam().get(0));
     }
 
     @Test
     void testAddMultipleCharacter() {
-        Element e1 = new Element("Hydro", "O Tears, I Shall Repay");
-        Element e2 = new Element("Hydro", "O Tides, I Have Returned");
-        Character testCharacter2 = new Character("Neuvillette", "Hydro", e1, e2);
-        testTeam.addCharacter(testCharacter);
-        testTeam.addCharacter(testCharacter2);
+        testTeam.addCharacter(kinich);
+        testTeam.addCharacter(neuvilette);
         assertEquals(2, testTeam.getTeam().size());
-        assertEquals(testCharacter, testTeam.getTeam().get(0));
-        assertEquals(testCharacter2, testTeam.getTeam().get(1));
+        assertEquals(kinich, testTeam.getTeam().get(0));
+        assertEquals(neuvilette, testTeam.getTeam().get(1));
     }
+
+    @Test
+    void testTeamReactionsBloom() {
+        assertTrue.add("Bloom");
+        testTeam.addCharacter(neuvilette);
+        testTeam.addCharacter(kinich);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsBloomTwice() {
+        assertTrue.add("Bloom");
+        testTeam.addCharacter(neuvilette);
+        testTeam.addCharacter(kinich);
+        testTeam.addCharacter(neuvilette);
+        testTeam.addCharacter(kinich);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsAllDendro() {
+        assertTrue.add("Bloom");
+        testTeam.addCharacter(neuvilette);
+        testTeam.addCharacter(kinich);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+        testTeam.addCharacter(wrio);
+        assertTrue.add("Frozen");
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+        testTeam.addCharacter(cyno);
+        assertTrue.add("Quicken");
+        assertTrue.add("Superconduct");
+        assertTrue.add("Electrocharged");
+        assertTrue(testTeam.viewTeamReactions().contains("Electrocharged"));
+        assertTrue(testTeam.viewTeamReactions().contains("Superconduct"));
+        assertTrue(testTeam.viewTeamReactions().contains("Quicken"));
+        testTeam.addCharacter(xiao);
+        assertTrue(testTeam.viewTeamReactions().contains("Swirl"));
+        testTeam.addCharacter(gaming);
+        assertTrue(testTeam.viewTeamReactions().contains("Melt"));
+        assertTrue(testTeam.viewTeamReactions().contains("Overloaded"));
+        assertTrue(testTeam.viewTeamReactions().contains("Vaporize"));
+        assertTrue(testTeam.viewTeamReactions().contains("Burning"));
+    }
+
+    @Test
+    void testTeamReactionsBurning() {
+        assertTrue.add("Burning");
+        testTeam.addCharacter(gaming);
+        testTeam.addCharacter(kinich);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsBurningTwice() {
+        assertTrue.add("Burning");
+        testTeam.addCharacter(gaming);
+        testTeam.addCharacter(kinich);
+        testTeam.addCharacter(gaming);
+        testTeam.addCharacter(kinich);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsCrystallizeHydro() {
+        assertTrue.add("Crystallize");
+        testTeam.addCharacter(zhongli);
+        testTeam.addCharacter(neuvilette);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsCrystallizeHydroTwice() {
+        assertTrue.add("Crystallize");
+        testTeam.addCharacter(zhongli);
+        testTeam.addCharacter(neuvilette);
+        testTeam.addCharacter(zhongli);
+        testTeam.addCharacter(neuvilette);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsCrystallizePyro() {
+        assertTrue.add("Crystallize");
+        testTeam.addCharacter(gaming);
+        testTeam.addCharacter(zhongli);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsCrystallizePyroTwice() {
+        assertTrue.add("Crystallize");
+        testTeam.addCharacter(gaming);
+        testTeam.addCharacter(zhongli);
+        testTeam.addCharacter(gaming);
+        testTeam.addCharacter(zhongli);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsCrystallizeElectro() {
+        assertTrue.add("Crystallize");
+        testTeam.addCharacter(zhongli);
+        testTeam.addCharacter(cyno);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsCrystallizeElectroTwice() {
+        assertTrue.add("Crystallize");
+        testTeam.addCharacter(zhongli);
+        testTeam.addCharacter(cyno);
+        testTeam.addCharacter(zhongli);
+        testTeam.addCharacter(cyno);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsFrozen() {
+        assertTrue.add("Frozen");
+        testTeam.addCharacter(neuvilette);
+        testTeam.addCharacter(wrio);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsFrozenTwice() {
+        assertTrue.add("Frozen");
+        testTeam.addCharacter(neuvilette);
+        testTeam.addCharacter(wrio);
+        testTeam.addCharacter(neuvilette);
+        testTeam.addCharacter(wrio);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsOverloaded() {
+        assertTrue.add("Overloaded");
+        testTeam.addCharacter(cyno);
+        testTeam.addCharacter(gaming);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsOverloadedTwice() {
+        assertTrue.add("Overloaded");
+        testTeam.addCharacter(cyno);
+        testTeam.addCharacter(gaming);
+        testTeam.addCharacter(cyno);
+        testTeam.addCharacter(gaming);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsSuperconduct() {
+        assertTrue.add("Superconduct");
+        testTeam.addCharacter(wrio);
+        testTeam.addCharacter(cyno);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsSuperconductTwice() {
+        assertTrue.add("Superconduct");
+        testTeam.addCharacter(wrio);
+        testTeam.addCharacter(cyno);
+        testTeam.addCharacter(wrio);
+        testTeam.addCharacter(cyno);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsElectrocharged() {
+        assertTrue.add("Electrocharged");
+        testTeam.addCharacter(cyno);
+        testTeam.addCharacter(neuvilette);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsElectrochargedTwice() {
+        assertTrue.add("Electrocharged");
+        testTeam.addCharacter(cyno);
+        testTeam.addCharacter(neuvilette);
+        testTeam.addCharacter(cyno);
+        testTeam.addCharacter(neuvilette);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsMelt() {
+        assertTrue.add("Melt");
+        testTeam.addCharacter(wrio);
+        testTeam.addCharacter(gaming);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsMeltTwice() {
+        assertTrue.add("Melt");
+        testTeam.addCharacter(wrio);
+        testTeam.addCharacter(gaming);
+        testTeam.addCharacter(wrio);
+        testTeam.addCharacter(gaming);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsSwirlElectro() {
+        assertTrue.add("Swirl");
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(cyno);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsSwirlElectroTwice() {
+        assertTrue.add("Swirl");
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(cyno);
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(cyno);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsSwirlPyro() {
+        assertTrue.add("Swirl");
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(gaming);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsSwirlPyroTwice() {
+        assertTrue.add("Swirl");
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(gaming);
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(gaming);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsSwirlHydro() {
+        assertTrue.add("Swirl");
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(neuvilette);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsSwirlHydroTwice() {
+        assertTrue.add("Swirl");
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(neuvilette);
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(neuvilette);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsSwirlCryo() {
+        assertTrue.add("Swirl");
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(wrio);
+        testTeam.addCharacter(zhongli);
+        assertEquals(1, testTeam.viewTeamReactions().size());
+        assertEquals("Swirl", testTeam.viewTeamReactions().get(0));
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsSwirlCryoTwice() {
+        assertTrue.add("Swirl");
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(wrio);
+        testTeam.addCharacter(zhongli);
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(wrio);
+        assertEquals(1, testTeam.viewTeamReactions().size());
+        assertEquals("Swirl", testTeam.viewTeamReactions().get(0));
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsMultipleReactions() {
+        testTeam.addCharacter(kinich);
+        testTeam.addCharacter(cyno);
+        testTeam.addCharacter(gaming);
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(wrio);
+        assertTrue(testTeam.viewTeamReactions().contains("Burning"));
+        assertTrue(testTeam.viewTeamReactions().contains("Quicken"));
+        assertTrue(testTeam.viewTeamReactions().contains("Overloaded"));
+        assertTrue(testTeam.viewTeamReactions().contains("Swirl"));
+        assertTrue(testTeam.viewTeamReactions().contains("Melt"));
+        assertTrue(testTeam.viewTeamReactions().contains("Superconduct"));
+    }
+
+    @Test
+    void testTeamReactionsOneReaction() {
+        assertTrue.add("Swirl");
+        testTeam.addCharacter(wrio);
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(wrio);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsSwirlCryoOnly() {
+        assertTrue.add("Swirl");
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(wrio);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsSwirlAll() {
+        assertTrue.add("Vaporize");
+        assertTrue.add("Overloaded");
+        assertTrue.add("Swirl");
+        assertTrue.add("Frozen");
+        assertTrue.add("Electrocharged");
+        assertTrue.add("Melt");
+        assertTrue.add("Superconduct");
+        testTeam.addCharacter(xiao);
+        testTeam.addCharacter(cyno);
+        testTeam.addCharacter(neuvilette);
+        testTeam.addCharacter(gaming);
+        testTeam.addCharacter(wrio);
+        assertTrue(testTeam.viewTeamReactions().contains("Vaporize"));
+        assertTrue(testTeam.viewTeamReactions().contains("Frozen"));
+        assertTrue(testTeam.viewTeamReactions().contains("Overloaded"));
+        assertTrue(testTeam.viewTeamReactions().contains("Swirl"));
+        assertTrue(testTeam.viewTeamReactions().contains("Melt"));
+        assertTrue(testTeam.viewTeamReactions().contains("Superconduct"));
+        assertTrue(testTeam.viewTeamReactions().contains("Electrocharged"));
+    }
+
+    @Test
+    void testTeamReactionsQuicken() {
+        assertTrue.add("Quicken");
+        testTeam.addCharacter(cyno);
+        testTeam.addCharacter(kinich);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsQuickenTwice() {
+        assertTrue.add("Quicken");
+        testTeam.addCharacter(cyno);
+        testTeam.addCharacter(kinich);
+        testTeam.addCharacter(cyno);
+        testTeam.addCharacter(kinich);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsVaporize() {
+        assertTrue.add("Vaporize");
+        testTeam.addCharacter(neuvilette);
+        testTeam.addCharacter(gaming);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
+    @Test
+    void testTeamReactionsVaporizeTwice() {
+        assertTrue.add("Vaporize");
+        testTeam.addCharacter(neuvilette);
+        testTeam.addCharacter(gaming);
+        testTeam.addCharacter(neuvilette);
+        testTeam.addCharacter(gaming);
+        assertEquals(assertTrue, testTeam.viewTeamReactions());
+    }
+
 }
