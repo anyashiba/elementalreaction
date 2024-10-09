@@ -38,7 +38,7 @@ public class StartGame {
             if (command == 6) {
                 continueGame = false;
             } else if (((command == 1) || (command == 5) || (command == 2)) 
-            && userTeam.getTeam().size() < 1) { 
+                    && userTeam.getTeam().size() < 1) { 
                 System.out.println("Please add characters to your team first!");
             } else {
                 doNext(command);
@@ -257,7 +257,7 @@ public class StartGame {
     // MODIFIES: this
     // EFFECTS: processes user inputs for character attributes and adds character to team
     // if all inputs were valid, if any input was invalid, end character creation 
-    private void createCharacterLoop(String name, int element, String eskillName, String ultName, String chooseElement) {
+    private void createCharacterLoop(String name, int element, String eskillName, String ultName, String accElement) {
         boolean continueCreate = true;
         while (continueCreate) {
             if (name == null) {
@@ -266,8 +266,8 @@ public class StartGame {
             } else if (element == 0) {
                 elementDisplay();
                 element = input.nextInt();
-                chooseElement = chooseElement(element);
-                continueCreate = elementIsNull(chooseElement);
+                accElement = chooseElement(element);
+                continueCreate = elementIsNull(accElement);
                 input.nextLine();
             } else if (eskillName == null) {
                 System.out.println("What would you like their skill to be called?");
@@ -276,7 +276,7 @@ public class StartGame {
                 System.out.println("What would you like their ultimate ability to be called?");
                 ultName = input.next();
             } else {
-                characterCreated(chooseElement, eskillName, ultName, name);
+                characterCreated(accElement, eskillName, ultName, name);
                 continueCreate = false;
             }
         }
