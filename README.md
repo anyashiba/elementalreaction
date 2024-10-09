@@ -26,6 +26,6 @@ something I am knowledgeable about as well.
 *elemental reactions will cause damage based on what abilities were called*
 - *i want my user to be able open up a log of the elements and elemental reactions they have triggered*
 - *i want my user to be able to pick which character they want to use and see their attributes/traits before picking*
-- *i want my user be able to choose a new team comp*
 - *I want my user to have an arbitrary amount of enemies appear until they decide to quit*
+= *i want my user to be able to add as many characters as they want to their teamComps*
 - *i want my user to be able to call an arbitrary amount of abilties*
