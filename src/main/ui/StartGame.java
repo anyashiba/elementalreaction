@@ -30,7 +30,6 @@ public class StartGame {
         int command = 0;
 
         init();
-        //TODO create allBaseCharactersAdded();
 
         while (continueGame) {
             displayMenu();
@@ -38,9 +37,8 @@ public class StartGame {
 
             if (command == 6) {
                 continueGame = false;
-            } else if (command == 1 && userTeam.getTeam().size() < 1) { 
-                System.out.println("Please add characters to your team first!");
-            } else if (command == 5 && userTeam.getTeam().size() < 1) { 
+            } else if (((command == 1) || (command == 5) || (command == 2)) 
+            && userTeam.getTeam().size() < 1) { 
                 System.out.println("Please add characters to your team first!");
             } else {
                 doNext(command);
@@ -56,18 +54,6 @@ public class StartGame {
         abilitiesCalled = new ArrayList<Element>();
         enemy = new Enemy();
         input = new Scanner(System.in);
-
-        // THIS IS ONLY FOR TESTING
-        // Element testSkill = new Element("Dendro", "Canopy Hunter: Riding High");
-        // Element testUlt = new Element("Dendro", "Hail to the Almighty Dragonlord");
-        // Character testCharacter = new Character("Kinich", "Dendro", testSkill, testUlt);
-
-        // Element e1 = new Element("Hydro", "O Tears, I Shall Repay");
-        // Element e2 = new Element("Hydro", "O Tides, I Have Returned");
-        // Character testCharacter2 = new Character("Neuvillette", "Hydro", e1, e2);
-        
-        userTeam.addCharacter(testCharacter);
-        userTeam.addCharacter(testCharacter2);
     }
 
     // EFFECTS: prints out the first user menu
