@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Character {
     private String name;
     private String element;
-    private Element eSkill;
+    private Element eskill;
     private Element ult;
 
     //REQUIRES:
@@ -14,7 +14,7 @@ public class Character {
     public Character(String name, String element, Element eskill, Element ult) {
         this.name = name;
         this.element = element;
-        this.eSkill = eskill;
+        this.eskill = eskill;
         this.ult = ult;
     }
 
@@ -25,8 +25,8 @@ public class Character {
         ArrayList<String> attributes = new ArrayList<>();
         attributes.add("Name: " + name);
         attributes.add("Element: " + element);
-        attributes.add("ESkill: " + eSkill.getName());
-        attributes.add("Ult: " + ult.getName());
+        attributes.add("1: ESkill: " + eskill.getName());
+        attributes.add("2: Ult: " + ult.getName());
 
         return attributes;
     }
@@ -40,7 +40,7 @@ public class Character {
 
     public Element getESkill() {
          //stub
-        return eSkill;
+        return eskill;
     }
 
     public Element getUlt() {

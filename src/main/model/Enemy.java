@@ -12,12 +12,14 @@ public class Enemy {
 
     //REQUIRES: dmg > 0 and hp cannot be less than 0
     //MODIFIES: this
-    //EFFECTS: damages enemy by given int, resets hp when enemy health < 0 
+    //EFFECTS: damages enemy by given int 
     public void damage(int dmg) {
         health -= dmg;
-        if (health <= 0) {
+    }
+
+    //TODO: specify and test 
+    public void resetHP() {
         health = 100;
-        }
     }
 
     //getters
