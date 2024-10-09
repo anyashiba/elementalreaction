@@ -57,14 +57,14 @@ public class StartGame {
         enemy = new Enemy();
         input = new Scanner(System.in);
 
-        //TODO REMOVE LATER! THIS IS ONLY FOR TESTING
-        Element testSkill = new Element("Dendro", "Canopy Hunter: Riding High");
-        Element testUlt = new Element("Dendro", "Hail to the Almighty Dragonlord");
-        Character testCharacter = new Character("Kinich", "Dendro", testSkill, testUlt);
+        // THIS IS ONLY FOR TESTING
+        // Element testSkill = new Element("Dendro", "Canopy Hunter: Riding High");
+        // Element testUlt = new Element("Dendro", "Hail to the Almighty Dragonlord");
+        // Character testCharacter = new Character("Kinich", "Dendro", testSkill, testUlt);
 
-        Element e1 = new Element("Hydro", "O Tears, I Shall Repay");
-        Element e2 = new Element("Hydro", "O Tides, I Have Returned");
-        Character testCharacter2 = new Character("Neuvillette", "Hydro", e1, e2);
+        // Element e1 = new Element("Hydro", "O Tears, I Shall Repay");
+        // Element e2 = new Element("Hydro", "O Tides, I Have Returned");
+        // Character testCharacter2 = new Character("Neuvillette", "Hydro", e1, e2);
         
         userTeam.addCharacter(testCharacter);
         userTeam.addCharacter(testCharacter2);
