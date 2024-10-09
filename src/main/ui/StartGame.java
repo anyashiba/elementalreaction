@@ -341,4 +341,9 @@ public class StartGame {
         }
     }
 
+    // EFFECTS: prints out what reactions the user can do with the characters in their team
+    private void checkReactions() {
+        System.out.println(userTeam.viewTeamReactions());
+    }
+
 }
