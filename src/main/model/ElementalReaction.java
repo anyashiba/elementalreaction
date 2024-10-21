@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+//elemental reaction class that has methods which correspond to damage dealt depending on
+// combination of elements
 public class ElementalReaction {
     private static final int MELT = 20;
     private static final int FROZEN = 12;

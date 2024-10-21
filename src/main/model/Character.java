@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+// character class that is used to fight enemies
 public class Character {
     private String name;
     private String element;

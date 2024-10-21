@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+// TeamComp class has a list of characters that represents your team to use to fight
 public class TeamComp {
     private ArrayList<Character> team;
 
@@ -19,7 +20,7 @@ public class TeamComp {
         team.add(character);
     }
 
-    //REQUIRES: team size >= 2
+    //REQUIRES: 
     //MODIFIES: 
     //EFFECTS: returns the a list of the reactions that you can do with the characters in your team
     public ArrayList<String> viewTeamReactions() {

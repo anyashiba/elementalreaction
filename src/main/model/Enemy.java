@@ -1,5 +1,6 @@
 package model;
 
+// enemy class that has hp and loses hp everytime an ability called
 public class Enemy {
     private int health;
 

@@ -2,6 +2,7 @@ package model;
 
 import java.lang.String;
 
+//element class that corresponds to an abiltiy 
 public class Element {
     private String element;
     private String name;
