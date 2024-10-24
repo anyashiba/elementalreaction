@@ -11,8 +11,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import org.json.*;
-
-public class JsonReader {
 // code referenced from JsonSerializationDemo
+public class JsonReader {
 
 }
