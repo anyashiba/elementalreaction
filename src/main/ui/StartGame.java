@@ -9,6 +9,7 @@ import model.ElementalReaction;
 import model.TeamComp;
 import model.Enemy;
 
+// Interface and displays to start the game
 public class StartGame {
     private Scanner input;
     private TeamComp userTeam;
