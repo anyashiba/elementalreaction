@@ -1,0 +1,12 @@
+{"team": [{
+    "name": "jas",
+    "eskill": {
+        "name": "gi",
+        "element": "Geo"
+    },
+    "ult": {
+        "name": "hi",
+        "element": "Geo"
+    },
+    "element": "Geo"
+}]}

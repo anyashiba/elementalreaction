@@ -2,11 +2,6 @@ package model;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
-import model.Character;
-import model.Element;
-import model.TeamComp;
-
-import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

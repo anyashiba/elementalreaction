@@ -1,5 +1,7 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,19 +9,34 @@ import model.Character;
 import model.Element;
 import model.ElementalReaction;
 import model.TeamComp;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 import model.Enemy;
 
 // Interface and displays to start the game
 public class StartGame {
+    private static final String JSON_STORE = "./data/workroom.json";
     private Scanner input;
     private TeamComp userTeam;
     private ElementalReaction er;
     private ArrayList<Element> abilitiesCalled;
     private Enemy enemy;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
+    // code referenced from JsonSerializationDemo
+    // EFFECTS: constructs workroom and runs application
+    public StartGame() throws FileNotFoundException {
+        input = new Scanner(System.in);
+        userTeam = new TeamComp();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+        runGame();
+    }
     
     // code taken from BankTellerApp UI
     // EFFECTS: starts game with main menu
-    public StartGame() {
+    public void runGame() {
 
         mainMenu();
     }
@@ -36,7 +53,7 @@ public class StartGame {
             displayMenu();
             command = input.nextInt();
 
-            if (command == 6) {
+            if (command == 8) {
                 continueGame = false;
             } else if (((command == 1) || (command == 5) || (command == 2)) 
                     && userTeam.getTeam().size() < 1) { 
@@ -65,7 +82,9 @@ public class StartGame {
         System.out.println("3: Check Battlelog");
         System.out.println("4: Make and add new character");
         System.out.println("5: Check reactions your team can do");
-        System.out.println("6: Quit");
+        System.out.println("6: save work room to file");
+        System.out.println("7: load work room from file");
+        System.out.println("8: Quit");
     }
 
     // EFFECTS: processes user input and if the input is invalid, tells user
@@ -80,6 +99,10 @@ public class StartGame {
             makeNewCharacter();
         } else if (command == 5) {
             checkReactions();
+        } else if (command == 6) {
+            saveTeamComp();
+        } else if (command == 7) {
+            loadTeamComp();
         } else {
             System.out.println("Input not valid");
         }
@@ -331,6 +354,29 @@ public class StartGame {
     // EFFECTS: prints out what reactions the user can do with the characters in their team
     private void checkReactions() {
         System.out.println(userTeam.viewTeamReactions());
+    }
+
+    // EFFECTS: saves the workroom to file
+    private void saveTeamComp() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(userTeam);
+            jsonWriter.close();
+            System.out.println("Saved your team to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+    
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadTeamComp() {
+        try {
+            userTeam = jsonReader.read();
+            System.out.println("Loaded your team from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
 }
