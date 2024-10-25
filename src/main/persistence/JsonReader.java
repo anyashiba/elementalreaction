@@ -11,7 +11,9 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import org.json.*;
+
 // code referenced from JsonSerializationDemo
+// Represents a reader that reads JSON files of TeamComp
 public class JsonReader {
     private String source;
 
