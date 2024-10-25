@@ -2,6 +2,7 @@ package model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// Test class to check json objects
 // code referenced from JsonSerializationDemo
 public class JsonTest {
     protected void checkCharacter(String name, String element, Element eskill, Element ult, Character chara) {

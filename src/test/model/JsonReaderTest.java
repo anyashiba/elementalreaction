@@ -8,6 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Test class for JsonReader
 // code referenced from JsonSerializationDemo
 class JsonReaderTest extends JsonTest {
 
@@ -15,7 +16,7 @@ class JsonReaderTest extends JsonTest {
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
-            TeamComp team = reader.read();
+            reader.read();
             fail("IOException expected");
         } catch (IOException e) {
             // pass

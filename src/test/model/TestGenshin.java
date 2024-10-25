@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+// Test class for all classes in model
 public class TestGenshin {
     private Enemy testEnemy;
     private TeamComp testTeam;

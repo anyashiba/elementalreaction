@@ -204,6 +204,7 @@ public class TeamComp {
     }
 
     // code referenced from JsonSerializationDemo
+    // EFFECTS: returns things in TeamComp as a JSON array
     private JSONArray charactersToJson() {
         JSONArray jsonArray = new JSONArray();
 

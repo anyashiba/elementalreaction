@@ -72,14 +72,11 @@ public class JsonReader {
         String name = jsonObject.getString("name");
         String element = jsonObject.getString("element");
 
-        // Deserialize Element fields (eskill and ult)
         Element eskill = parseElement(jsonObject.getJSONObject("eskill"));
         Element ult = parseElement(jsonObject.getJSONObject("ult"));
 
-        // Create Character object
         Character character = new Character(name, element, eskill, ult);
        
-        // Add the character to the team
         team.addCharacter(character);
     }
 

@@ -82,8 +82,8 @@ public class StartGame {
         System.out.println("3: Check Battlelog");
         System.out.println("4: Make and add new character");
         System.out.println("5: Check reactions your team can do");
-        System.out.println("6: save work room to file");
-        System.out.println("7: load work room from file");
+        System.out.println("6: Save your team to file");
+        System.out.println("7: Load your team from file");
         System.out.println("8: Quit");
     }
 

@@ -9,13 +9,14 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Test class for JsonWriter
 // code referenced from JsonSerializationDemo
 class JsonWriterTest extends JsonTest {
 
     @Test
     void testWriterInvalidFile() {
         try {
-            TeamComp team = new TeamComp();
+            new TeamComp();
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
             writer.open();
             fail("IOException was expected");
