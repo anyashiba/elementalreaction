@@ -1,0 +1,28 @@
+{
+    "team": [
+        {
+            "name": "Kinich",
+            "element": "Dendro",
+            "eskill": {
+                "name": "Canopy Hunter: Riding High",
+                "skill": "Dendro"
+            },
+            "ult": {
+                "name": "Hail to the Almighty Dragonlord",
+                "skill": "Dendro"
+            }
+        },
+        {
+            "name": "Cyno",
+            "element": "Electro",
+            "eskill": {
+                "name": "Secret Rite: Chasmic Soulfarer",
+                "skill": "Electro"
+            },
+            "ult": {
+                "name": "Sacred Rite: Wolf's Swiftness",
+                "skill": "Electro"
+            }
+        }
+    ]
+}

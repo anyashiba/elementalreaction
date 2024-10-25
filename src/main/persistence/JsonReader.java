@@ -22,7 +22,6 @@ public class JsonReader {
         this.source = source;
     }
 
-
     // EFFECTS: reads TeamComp from file and returns it;
     // throws IOException if an error occurs reading data from file
     public TeamComp read() throws IOException {
@@ -31,20 +30,16 @@ public class JsonReader {
         return parseTeamComp(jsonObject);
     }
 
-
     // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
-
 
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
             stream.forEach(s -> contentBuilder.append(s));
         }
 
-
         return contentBuilder.toString();
     }
-
 
     // EFFECTS: parses TeamComp from JSON object and returns it
     private TeamComp parseTeamComp(JSONObject jsonObject) {
@@ -52,7 +47,6 @@ public class JsonReader {
         addCharacters(team, jsonObject);
         return team;
     }
-
 
     // MODIFIES: TeamComp
     // EFFECTS: parses characters from JSON object and adds them to TeamComp
@@ -64,7 +58,6 @@ public class JsonReader {
         }
     }
 
-
     // EFFECTS: parses an Element object from a JSON object and returns it
     private Element parseElement(JSONObject json) {
         String elementName = json.getString("name");
@@ -73,18 +66,15 @@ public class JsonReader {
         return new Element(elementName, skill);
     }
 
-
     // MODIFIES: team
     // EFFECTS: parses character from JSON object and adds it to the team
     private void addCharacter(TeamComp team, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         String element = jsonObject.getString("element");
 
-
         // Deserialize Element fields (eskill and ult)
         Element eskill = parseElement(jsonObject.getJSONObject("eskill"));
         Element ult = parseElement(jsonObject.getJSONObject("ult"));
-
 
         // Create Character object
         Character character = new Character(name, element, eskill, ult);
