@@ -42,7 +42,6 @@ public class Character {
 
 
     public Element getESkill() {
-         //stub
         return eskill;
     }
 

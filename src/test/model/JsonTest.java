@@ -11,7 +11,7 @@ public class JsonTest {
         assertEquals(ult, chara.getUlt());
     }
 
-    protected void checkElement(String element, String name, Element ability) {
+    protected void checkElement(String name, String element, Element ability) {
         assertEquals(name, ability.getName());
         assertEquals(element, ability.getElement());
     }

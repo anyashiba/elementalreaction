@@ -60,10 +60,10 @@ public class JsonReader {
 
     // EFFECTS: parses an Element object from a JSON object and returns it
     private Element parseElement(JSONObject json) {
+        String element = json.getString("element");
         String elementName = json.getString("name");
-        String skill = json.getString("skill");
        
-        return new Element(elementName, skill);
+        return new Element(element, elementName);
     }
 
     // MODIFIES: team

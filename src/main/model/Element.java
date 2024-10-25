@@ -13,9 +13,9 @@ public class Element {
     //REQUIRES:
     //MODIFIES: this
     //EFFECTS: constructs an element with specified element type and the abiltiy associated with element
-    public Element(String element, String skill) {
+    public Element(String element, String name) {
         this.element = element;
-        this.name = skill;
+        this.name = name;
     }
 
     //getters
@@ -32,8 +32,8 @@ public class Element {
     // EFFECTS: returns this element as JSON object
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("name", name);
         json.put("element", element);
+        json.put("name", name);
         return json;
     }
 }

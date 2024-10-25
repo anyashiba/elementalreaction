@@ -24,7 +24,7 @@ class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderEmptyTeam() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyTeam.json");
+        JsonReader reader = new JsonReader("./data/testReaderEmptyTeamComp.json");
         try {
             TeamComp team = reader.read();
             assertEquals(0, team.getTeam().size());
@@ -41,12 +41,12 @@ class JsonReaderTest extends JsonTest {
             List<Character> characters = team.getTeam();
             assertEquals(2, characters.size());
             Character kinich = characters.get(0);
-            checkElement("Dendro", "Canopy Hunter: Riding High", kinich.getESkill());
-            checkElement("Dendro", "Hail to the Almighty Dragonlord", kinich.getUlt());
+            checkElement("Canopy Hunter: Riding High", "Dendro", kinich.getESkill());
+            checkElement("Hail to the Almighty Dragonlord",  "Dendro", kinich.getUlt());
             checkCharacter("Kinich", "Dendro", kinich.getESkill(), kinich.getUlt(), kinich);
             Character cyno = characters.get(1);
-            checkElement("Electro", "Secret Rite: Chasmic Soulfarer", cyno.getESkill());
-            checkElement("Electro", "Sacred Rite: Wolf's Swiftness", cyno.getUlt());
+            checkElement("Secret Rite: Chasmic Soulfarer","Electro", cyno.getESkill());
+            checkElement("Sacred Rite: Wolf's Swiftness","Electro", cyno.getUlt());
             checkCharacter("Cyno", "Electro", cyno.getESkill(), cyno.getUlt(), cyno);
         } catch (IOException e) {
             fail("Couldn't read from file");
