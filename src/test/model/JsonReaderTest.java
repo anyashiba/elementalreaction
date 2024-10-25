@@ -1,11 +1,6 @@
 package model;
-
-import model.Character;
-import model.Element;
-import model.TeamComp;
 import persistence.JsonReader;
 
-import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -13,6 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// code referenced from JsonSerializationDemo
 class JsonReaderTest extends JsonTest {
 
     @Test

@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONObject;
+
 // character class that is used to fight enemies
 public class Character {
     private String name;
@@ -50,5 +52,16 @@ public class Character {
 
     public String getElement() {
         return element;
+    }
+
+    // code referenced from JsonSerializationDemo
+    // EFFECTS: returns this character as JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("element", element);
+        json.put("eskill", eskill.toJson());
+        json.put("ult", ult.toJson());
+        return json;
     }
 }

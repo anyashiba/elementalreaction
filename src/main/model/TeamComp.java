@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 // TeamComp class has a list of characters that represents your team to use to fight
 public class TeamComp {
     private ArrayList<Character> team;
@@ -188,6 +191,27 @@ public class TeamComp {
 
     public ArrayList<Character> getTeam() {
         return team;
+    }
+
+    // code referenced from JsonSerializationDemo
+    // EFFECTS: returns this team as JSON object
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+
+        json.put("team", charactersToJson());
+        return json;
+
+    }
+
+    // code referenced from JsonSerializationDemo
+    private JSONArray charactersToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Character character : team) {
+            jsonArray.put(character.toJson());
+        }
+        
+        return jsonArray;
     }
 
 }

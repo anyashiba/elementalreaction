@@ -1,10 +1,8 @@
 package model;
 
-import model.Element;
-import model.Character;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// code referenced from JsonSerializationDemo
 public class JsonTest {
     protected void checkCharacter(String name, String element, Element eskill, Element ult, Character chara) {
         assertEquals(name, chara.getName());
