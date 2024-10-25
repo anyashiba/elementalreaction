@@ -356,6 +356,7 @@ public class StartGame {
         System.out.println(userTeam.viewTeamReactions());
     }
 
+    // code referenced from JsonSerializationDemo
     // EFFECTS: saves the workroom to file
     private void saveTeamComp() {
         try {

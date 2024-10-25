@@ -1,4 +1,5 @@
 package model;
+
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -42,6 +43,7 @@ class JsonWriterTest extends JsonTest {
         }
     }
 
+    @SuppressWarnings("methodlength")
     @Test
     void testWriterGeneralTeamComp() {
         try {

@@ -16,4 +16,5 @@ public class JsonTest {
         assertEquals(name, ability.getName());
         assertEquals(element, ability.getElement());
     }
+
 }
