@@ -1,6 +1,7 @@
 package model;
 
-// enemy class that has hp and loses hp everytime an ability called
+// enemy class that has hp and loses hp everytime a combination of 
+// abilities are called
 public class Enemy {
     private int health;
 
@@ -24,6 +25,13 @@ public class Enemy {
     //EFFECTS: resets enemy HP back to 100
     public void resetHP() {
         health = 100;
+    }
+
+    //REQUIRES:
+    //MODIFIES: this
+    //EFFECTS: sets enemy HP to given value
+    public void setHP(int newHP) {
+        health = newHP;
     }
 
     //getters

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.stream.Stream;
 
 import org.json.*;
@@ -28,6 +29,25 @@ public class JsonReader {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseTeamComp(jsonObject);
+    }
+
+    // EFFECTS: reads battleLog from file and returns it as a List<String>
+    public ArrayList<String> readBattleLog() throws IOException {
+        String jsonData = readFile(source);
+        JSONArray jsonArray = new JSONArray(jsonData);
+
+        ArrayList<String> battleLog = new ArrayList<>();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            battleLog.add(jsonArray.getString(i)); 
+        }
+
+        return battleLog;  
+    }
+
+    // EFFECTS: reads the integer value from the file and returns it
+    public int readEnemyHP() throws IOException {
+        String hp = readFile(source);
+        return Integer.parseInt(hp);
     }
 
     // EFFECTS: reads source file as string and returns it

@@ -1,9 +1,12 @@
 package persistence;
 
 import model.TeamComp;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.*;
+import java.util.List;
 
 // code referenced from JsonSerializationDemo
 // Represents a writer that writes JSON representation of TeamComp to file
@@ -29,6 +32,21 @@ public class JsonWriter {
     public void write(TeamComp team) { 
         JSONObject json = team.toJson(); 
         saveToFile(json.toString(TAB));
+    }
+
+    // MODIFIES: this
+    // EFFECTS: writes JSON representation of battleLog to file
+    public void writeBattleLog(List<String> battleLog) { 
+        JSONArray jsonArray = new JSONArray();
+
+        for (String action : battleLog) {
+            jsonArray.put(action);
+        }
+        saveToFile(jsonArray.toString(TAB));
+    }
+
+    public void writeEnemyHP(int hp) {
+        saveToFile(Integer.toString(hp));
     }
 
     // MODIFIES: this

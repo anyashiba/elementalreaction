@@ -121,6 +121,18 @@ public class TestGenshin {
         assertEquals(0, testER.getLog().size());
     }
 
+    @Test
+    void testSetBattleLog() {
+        ArrayList<String> testList = new ArrayList<>();
+        testList.add("hello");
+        testList.add("world");
+        testER.react(dendro, hydro);
+        testER.setBattleLog(testList);
+        assertEquals(2, testER.getLog().size());
+        assertEquals("hello", testER.getLog().get(0));
+        assertEquals("world", testER.getLog().get(1));
+    }
+
     @Test 
     void testERreact() {
         assertEquals(15, testER.react(dendro, hydro));
@@ -261,14 +273,23 @@ public class TestGenshin {
     }
 
     @Test
+    void testEnemySetHP() {
+        testEnemy.damage(50);
+        testEnemy.setHP(10);
+        assertEquals(10, testEnemy.getHP());
+    }
+
+    @Test
     void testTeamCompConstructor() {
         assertTrue(testTeam.getTeam().isEmpty());
+        assertTrue(testTeam.checkTeam().isEmpty());
     }
 
     @Test
     void testAddCharacter() {
         testTeam.addCharacter(kinich);
         assertEquals(1, testTeam.getTeam().size());
+        assertEquals(1, testTeam.checkTeam().size());
         assertEquals(kinich, testTeam.getTeam().get(0));
     }
 
@@ -279,6 +300,8 @@ public class TestGenshin {
         assertEquals(2, testTeam.getTeam().size());
         assertEquals(kinich, testTeam.getTeam().get(0));
         assertEquals(neuvilette, testTeam.getTeam().get(1));
+        assertEquals(kinich, testTeam.checkTeam().get(0));
+        assertEquals(neuvilette, testTeam.checkTeam().get(1));
     }
 
     @Test

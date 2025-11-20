@@ -138,6 +138,13 @@ public class ElementalReaction {
             && !a2.getElement().equals("Anemo"));
     }
 
+    //REQUIRES: 
+    //MODIFIES: this
+    //EFFECTS: sets the battlelog to a new battlelog
+    public void setBattleLog(ArrayList<String> newLog) {
+        battleLog = newLog;
+    }
+
     //getters
 
     //REQUIRES: 

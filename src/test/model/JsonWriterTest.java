@@ -6,6 +6,7 @@ import persistence.JsonWriter;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,8 +22,27 @@ class JsonWriterTest extends JsonTest {
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
             writer.open();
             fail("IOException was expected");
+            
         } catch (IOException e) {
             // pass
+        }
+    }
+
+    @Test
+    void testWriteEnemyHP() {
+        try {
+            int hp = 100;
+            JsonWriter writer = new JsonWriter("./data/testWriterEnemyHP.json");
+            writer.open();
+            writer.writeEnemyHP(100);
+            writer.close();
+
+            JsonReader reader = new JsonReader("./data/testWriterEnemyHP.json");
+            hp = reader.readEnemyHP();
+            assertEquals(100, hp);
+
+        } catch (IOException e) {
+            fail("Exception should not have been thrown");
         }
     }
 
@@ -38,6 +58,48 @@ class JsonWriterTest extends JsonTest {
             JsonReader reader = new JsonReader("./data/testWriterEmptyTeamComp.json");
             team = reader.read();
             assertEquals(0, team.getTeam().size());
+
+        } catch (IOException e) {
+            fail("Exception should not have been thrown");
+        }
+    }
+
+    @Test
+    void testWriterEmptyBattleLog() {
+        try {
+            List<String> battleLog = new ArrayList<String>();
+            JsonWriter writer = new JsonWriter("./data/testWriterEmptyBattleLog.json");
+            writer.open();
+            writer.writeBattleLog(battleLog);
+            writer.close();
+
+            JsonReader reader = new JsonReader("./data/testWriterEmptyBattleLog.json");
+            battleLog = reader.readBattleLog();
+            assertEquals(0, battleLog.size());
+
+        } catch (IOException e) {
+            fail("Exception should not have been thrown");
+        }
+    }
+
+    @Test
+    void testWriterGeneralBattleLog() {
+        try {
+            List<String> battleLog = new ArrayList<String>();
+            battleLog.add("Canopy Hunter: Riding High and Secret Rite: Chasmic Soulfarer did 15 damage!");
+            battleLog.add("Hail to the Almighty Dragonlord and Sacred Rite: Wolf's Swiftness did 15 damage!");
+            JsonWriter writer = new JsonWriter("./data/testWriterGeneralBattleLog.json");
+            writer.open();
+            writer.writeBattleLog(battleLog);
+            writer.close();
+
+            JsonReader reader = new JsonReader("./data/testWriterGeneralBattleLog.json");
+            battleLog = reader.readBattleLog();
+            assertEquals("Canopy Hunter: Riding High and Secret Rite: Chasmic Soulfarer did 15 damage!", 
+                    battleLog.get(0));
+            assertEquals("Hail to the Almighty Dragonlord and Sacred Rite: Wolf's Swiftness did 15 damage!", 
+                    battleLog.get(1));
+
         } catch (IOException e) {
             fail("Exception should not have been thrown");
         }

@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import org.json.JSONObject;
 
+import persistence.Writable;
+
 // character class that is used to fight enemies
-public class Character {
+public class Character implements Writable {
     private String name;
     private String element;
     private Element eskill;
@@ -30,6 +32,8 @@ public class Character {
         attributes.add("Element: " + element);
         attributes.add("1: ESkill: " + eskill.getName());
         attributes.add("2: Ult: " + ult.getName());
+
+        EventLog.getInstance().logEvent(new Event("Checked attributes for " + this.getName()));
 
         return attributes;
     }

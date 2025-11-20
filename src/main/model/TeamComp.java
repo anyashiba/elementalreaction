@@ -1,12 +1,15 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import persistence.Writable;
+
 // TeamComp class has a list of characters that represents your team to use to fight
-public class TeamComp {
+public class TeamComp implements Writable {
     private ArrayList<Character> team;
 
     //REQUIRES: 
@@ -19,7 +22,12 @@ public class TeamComp {
     //REQUIRES: 
     //MODIFIES: this
     //EFFECTS: adds character to the team 
-    public void addCharacter(Character character) {
+    // public void addCharacter(Character character) {
+    //     team.add(character);
+    // }
+
+    public synchronized void addCharacter(Character character) {
+        EventLog.getInstance().logEvent(new Event("Added character to team"));
         team.add(character);
     }
 
@@ -43,6 +51,8 @@ public class TeamComp {
                 checkAllReactions(reactionCombo, reactions);
             }
         }
+
+        EventLog.getInstance().logEvent(new Event("Viewed team reactions"));
     
         return reactions;
     }
@@ -189,8 +199,13 @@ public class TeamComp {
 
     //getters
 
-    public ArrayList<Character> getTeam() {
+    public synchronized List<Character> checkTeam() {
+        EventLog.getInstance().logEvent(new Event("Checked team"));
         return team;
+    }
+
+    public synchronized List<Character> getTeam() {
+        return new ArrayList<>(team);
     }
 
     // code referenced from JsonSerializationDemo

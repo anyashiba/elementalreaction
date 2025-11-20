@@ -36,6 +36,32 @@ class JsonReaderTest extends JsonTest {
     }
 
     @Test
+    void testReaderEmptyBattleLog() {
+        JsonReader reader = new JsonReader("./data/testReaderEmptyBattleLog.json");
+        try {
+            List<String> battleLog = reader.readBattleLog();
+            assertEquals(0, battleLog.size());
+        } catch (IOException e) {
+            fail("Couldn't read from file");
+        }
+    }
+    
+    @Test
+    void testReaderGeneralBattleLog() {
+        JsonReader reader = new JsonReader("./data/testReaderGeneralBattleLog.json");
+        try {
+            List<String> battleLog = reader.readBattleLog();
+            assertEquals(2, battleLog.size()); 
+            assertEquals("Canopy Hunter: Riding High and Secret Rite: Chasmic Soulfarer did 15 damage!", 
+                    battleLog.get(0));
+            assertEquals("Hail to the Almighty Dragonlord and Sacred Rite: Wolf's Swiftness did 15 damage!", 
+                    battleLog.get(1));
+        } catch (IOException e) {
+            fail("Couldn't read from file");
+        }
+    }
+
+    @Test
     void testReaderGeneralTeamComp() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralTeamComp.json");
         try {

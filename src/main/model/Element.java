@@ -4,8 +4,10 @@ import java.lang.String;
 
 import org.json.JSONObject;
 
+import persistence.Writable;
+
 //element class that corresponds to an abiltiy 
-public class Element {
+public class Element implements Writable {
     private String element;
     private String name;
     

@@ -16,6 +16,8 @@ import model.Enemy;
 // Interface and displays to start the game
 public class StartGame {
     private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_BATTLELOG = "./data/battleLog.json";
+    private static final String JSON_ENEMYHP = "./data/enemyHP.json";
     private Scanner input;
     private TeamComp userTeam;
     private ElementalReaction er;
@@ -23,20 +25,29 @@ public class StartGame {
     private Enemy enemy;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
+    private JsonWriter jsonWriterBattleLog;
+    private JsonReader jsonReaderBattleLog;
+    private JsonWriter jsonWriterEnemyHP;
+    private JsonReader jsonReaderEnemyHP;
 
-    // code referenced from JsonSerializationDemo
+    // code referenced from JsonSerializationDemo 
     // EFFECTS: constructs workroom and runs application
-    public StartGame() throws FileNotFoundException {
+    public StartGame(TeamComp userTeam) {
         input = new Scanner(System.in);
-        userTeam = new TeamComp();
+        this.userTeam = userTeam;
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
+        jsonWriterBattleLog = new JsonWriter(JSON_BATTLELOG);
+        jsonReaderBattleLog = new JsonReader(JSON_BATTLELOG);
+        jsonWriterEnemyHP = new JsonWriter(JSON_ENEMYHP);
+        jsonReaderEnemyHP = new JsonReader(JSON_ENEMYHP);
+        
         runGame();
     }
     
     // code taken from BankTellerApp UI
     // EFFECTS: starts game with main menu
-    public void runGame() {
+    private void runGame() {
 
         mainMenu();
     }
@@ -67,7 +78,6 @@ public class StartGame {
     // MODIFIES: this
     // EFFECTS: initializes all necessary classes and the scanner object to be used by the user
     private void init() {
-        userTeam = new TeamComp();
         er = new ElementalReaction();
         abilitiesCalled = new ArrayList<Element>();
         enemy = new Enemy();
@@ -82,8 +92,8 @@ public class StartGame {
         System.out.println("3: Check Battlelog");
         System.out.println("4: Make and add new character");
         System.out.println("5: Check reactions your team can do");
-        System.out.println("6: Save your team to file");
-        System.out.println("7: Load your team from file");
+        System.out.println("6: Save your data to file");
+        System.out.println("7: Load your data from file");
         System.out.println("8: Quit");
     }
 
@@ -356,16 +366,23 @@ public class StartGame {
         System.out.println(userTeam.viewTeamReactions());
     }
 
-    // code referenced from JsonSerializationDemo
-    // EFFECTS: saves the workroom to file
     private void saveTeamComp() {
         try {
             jsonWriter.open();
             jsonWriter.write(userTeam);
             jsonWriter.close();
-            System.out.println("Saved your team to " + JSON_STORE);
+
+            jsonWriterEnemyHP.open();
+            jsonWriterEnemyHP.writeEnemyHP(enemy.getHP());
+            jsonWriterEnemyHP.close();
+
+            jsonWriterBattleLog.open();
+            jsonWriterBattleLog.writeBattleLog(er.getLog());
+            jsonWriterBattleLog.close();
+
+            System.out.println("Saved your data to " + printFiles());
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to write to file: " + JSON_STORE);
+            System.out.println("Unable to write to file: " + printFiles());
         }
     }
     
@@ -374,10 +391,21 @@ public class StartGame {
     private void loadTeamComp() {
         try {
             userTeam = jsonReader.read();
-            System.out.println("Loaded your team from " + JSON_STORE);
+
+            ArrayList<String> battleLog = jsonReaderBattleLog.readBattleLog();
+            er.setBattleLog(battleLog);
+
+            int enemyHP = jsonReaderEnemyHP.readEnemyHP();
+            enemy.setHP(enemyHP);
+
+            System.out.println("Loaded your data from " + printFiles());
         } catch (IOException e) {
-            System.out.println("Unable to read from file: " + JSON_STORE);
+            System.out.println("Unable to read from files: " + printFiles());
         }
     }
 
+    private String printFiles() {
+        String string = JSON_STORE + ", " + JSON_BATTLELOG + ", " + JSON_ENEMYHP;
+        return string;
+    }
 }
