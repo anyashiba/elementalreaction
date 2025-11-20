@@ -18,3 +18,6 @@ Genshin Impact is an action role-playing game created by the game company miHoYo
 - *i want my user to be able to name their characters, abilities, and select an element for their character*
 - *i want my user to save their team if they wish*
 - *i want my user to load their team if they wish*
+- *i want my user to be able to see at what time they performed which action*
+
+Previous Git Commit shows terminal UI that performs all functionality, GUI performs limited functionality.
